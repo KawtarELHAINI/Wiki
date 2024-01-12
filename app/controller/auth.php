@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['username'] = $userFromDatabase['username'];
                 $_SESSION['nameRole'] = $userFromDatabase['nameRole'];
     
-                header("location:/depiawiki/app/view/adminIndex.php");
+                header("location:/wikie/app/view/adminIndex.php");
                 exit();
             } elseif ($nameRole == 'author') {
                 session_start();
@@ -30,12 +30,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['username'] = $userFromDatabase['username'];
                 $_SESSION['nameRole'] = $userFromDatabase['nameRole'];
     
-                header("location:/depiawiki/app/view/authorwikis.php");
+                header("location:/wikie/app/view/authorwikis.php");
                 exit();
             } else {
                 echo "<script>
                         setTimeout(function() {
-                            window.location.href = '/depiawiki/public/login.php?error=Invalid username or password';
+                            window.location.href = '/wikie/public/login.php?error=Invalid username or password';
                         }, 3000); // Introduce a 3-second delay
                       </script>";
                 exit();
@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Handle invalid login
             echo "<script>
                     setTimeout(function() {
-                        window.location.href = '/depiawiki/public/login.php?error=Invalid username or password';
+                        window.location.href = '/wikie/public/login.php?error=Invalid username or password';
                     }, 3000); // Introduce a 3-second delay
                   </script>";
             exit();
@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             echo "<script>
                setTimeout(function() {
-                   window.location.href = '/depiawiki/public/register.php';
+                   window.location.href = '/wikie/public/register.php';
                }, 3000);
              </script>";
             exit();
@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             echo "<script>
                 setTimeout(function() {
-                    window.location.href = '/depiawiki/public/register.php';
+                    window.location.href = '/wikie/public/register.php';
                 }, 3000);
               </script>";
             exit();
@@ -84,6 +84,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $User = new User($idUser, $username, $email, $hashedPassword, $nameRole);
         $UserService->insert($User);
-        header("location:/depiawiki/public/login.php");
+        header("location:/wikie/public/login.php");
         exit();
     }
